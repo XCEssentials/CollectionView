@@ -56,11 +56,13 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
     let data: Data
     
     public
-    lazy
-    var proxy: CollectionContainerProxy = CollectionContainerProxy(
-        view: self.collection,
-        data: self.data
-    )
+    func proxy() -> CollectionContainerProxy<Data>
+    {
+        return CollectionContainerProxy(
+            view: self.collection,
+            data: self.data
+        )
+    }
     
     // MARK: - Initializers
     
@@ -127,12 +129,12 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
             collection.prefetchDataSource = dataController
         }
         
-        if
-            #available(iOS 11.0, *)
-        {
-            collection.dragDelegate = dataController
-            collection.dropDelegate = dataController
-        }
+//        if
+//            #available(iOS 11.0, *)
+//        {
+//            collection.dragDelegate = dataController
+//            collection.dropDelegate = dataController
+//        }
     }
     
     public
