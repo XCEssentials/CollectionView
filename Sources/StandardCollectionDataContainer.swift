@@ -121,28 +121,28 @@ class StandardCollectionDataContainer<Item: Equatable>: NSObject, CollectionData
         )
     }
 
-    // MARK: - UICollectionViewDragDelegate support
-
-    @available(iOS 11.0, *)
-    public
-    func collectionView(
-        _ collectionView: UICollectionView,
-        itemsForBeginning session: UIDragSession,
-        at indexPath: IndexPath
-        ) -> [UIDragItem]
-    {
-        return [] // override for custom behaviour
-    }
-
-    // MARK: - UICollectionViewDropDelegate support
-
-    @available(iOS 11.0, *)
-    public
-    func collectionView(
-        _ collectionView: UICollectionView,
-        performDropWith coordinator: UICollectionViewDropCoordinator
-        )
-    {
-        // override for custom behaviour
-    }
+//    // MARK: - UICollectionViewDragDelegate support
+//
+//    @available(iOS 11.0, *)
+//    public
+//    func collectionView(
+//        _ collectionView: UICollectionView,
+//        itemsForBeginning session: UIDragSession,
+//        at indexPath: IndexPath
+//        ) -> [UIDragItem]
+//    {
+//        return [] // override for custom behaviour
+//    }
+//
+//    // MARK: - UICollectionViewDropDelegate support
+//
+//    @available(iOS 11.0, *)
+//    public
+//    func collectionView(
+//        _ collectionView: UICollectionView,
+//        performDropWith coordinator: UICollectionViewDropCoordinator
+//        )
+//    {
+//        // override for custom behaviour
+//    }
 }

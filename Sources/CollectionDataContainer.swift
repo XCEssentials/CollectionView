@@ -31,9 +31,9 @@ import UIKit
 public
 protocol CollectionDataContainer: UICollectionViewDataSource,
     UICollectionViewDataSourcePrefetching,
-    UICollectionViewDelegate,
-    UICollectionViewDragDelegate,
-    UICollectionViewDropDelegate
+    UICollectionViewDelegate
+//    UICollectionViewDragDelegate,
+//    UICollectionViewDropDelegate
 {
     associatedtype Item: Equatable
     
