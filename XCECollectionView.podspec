@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target     = '8.0'
   s.requires_arc              = true
   
-  # s.dependency                  'XXX', '~> 0.0'
+  s.dependency                  'SnapKit', '~> 3.2'
 
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }
   s.author                    = { 'Maxim Khatskevich' => 'maxim@khatskevi.ch' }
