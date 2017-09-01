@@ -10,6 +10,7 @@ configurations:
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
       CURRENT_PROJECT_VERSION: "0"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
   Release:
     type: "release"
@@ -18,6 +19,7 @@ configurations:
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
       CURRENT_PROJECT_VERSION: "0"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
 targets:
   Fwk:
     platform: "ios"
@@ -44,27 +46,6 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         DEFINES_MODULE: "NO"
         SKIP_INSTALL: "YES"
-  Tests:
-    platform: "ios"
-    type: ":bundle.unit-test"
-    references:
-    - "Fwk"
-    sources:
-    - "Tests"
-    configurations:
-      Debug:
-        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
-        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.CollectionView.Tst"
-        INFOPLIST_FILE: "Info/Tst.plist"
-        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
-        MTL_ENABLE_DEBUG_INFO: "true"
-      Release:
-        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
-        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.CollectionView.Tst"
-        INFOPLIST_FILE: "Info/Tst.plist"
-        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
 variants:
   $base:
     abstract: true
