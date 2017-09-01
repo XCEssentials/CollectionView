@@ -71,33 +71,5 @@ let project = Project("Main") { project in
             
             "MTL_ENABLE_DEBUG_INFO" <<< true
         )
-        
-        //---
-    
-        target.unitTests { unitTests in
-            
-            unitTests.include("Tests")
-            
-            //---
-            
-            unitTests.configurations.all.override(
-                
-                // very important for unit tests,
-                // prevents the error when unit test do not start at all
-                "LD_RUNPATH_SEARCH_PATHS" <<<
-                "$(inherited) @executable_path/Frameworks @loader_path/Frameworks",
-                
-                "IPHONEOS_DEPLOYMENT_TARGET" <<< params.deploymentTarget, // bug wokraround
-                
-                "PRODUCT_BUNDLE_IDENTIFIER" <<< bundleId.tst,
-                "INFOPLIST_FILE" <<< "Info/Tst.plist",
-                "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(BUILT_PRODUCTS_DIR)"
-            )
-            
-            unitTests.configurations.debug.override(
-                
-                "MTL_ENABLE_DEBUG_INFO" <<< true
-            )
-        }
     }
 }
