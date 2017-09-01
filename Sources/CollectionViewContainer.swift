@@ -143,4 +143,5 @@ extension CollectionViewContainer
  In case there is a need to use module name as a prefix, this typealias would come in handy.
  */
 public
-typealias Container = CollectionViewContainer
+typealias Container<Empty: UIView, Failure: UIView> =
+    CollectionViewContainer<Empty, Failure>
