@@ -31,11 +31,10 @@ import SnapKit
 //===
 
 open
-class CollectionViewContainer<Empty, Failure, Data>: UIView
+class CollectionViewContainer<Empty, Failure>: UIView
     where
     Empty: UIView,
-    Failure: UIView,
-    Data: CollectionDataContainer
+    Failure: UIView
 {
     public
     let emptyPlaceholder: Empty
@@ -52,18 +51,6 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
     public
     let collection: UICollectionView
     
-    public
-    let data: Data
-    
-    public
-    func proxy() -> CollectionContainerProxy<Data>
-    {
-        return CollectionContainerProxy(
-            view: self.collection,
-            data: self.data
-        )
-    }
-    
     // MARK: - Initializers
     
     public
@@ -71,8 +58,7 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
     init(
         showWhenEmpty empty: Empty,
         showOnFailure failure: Failure,
-        contentLayout layout: UICollectionViewLayout,
-        dataController: Data
+        contentLayout layout: UICollectionViewLayout
         )
     {
         self.emptyPlaceholder = empty
@@ -82,8 +68,6 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
             frame: CGRect.zero,
             collectionViewLayout: layout
         )
-        
-        self.data = dataController
         
         //---
         
@@ -117,24 +101,6 @@ class CollectionViewContainer<Empty, Failure, Data>: UIView
         emptyPlaceholder.isHidden = false
         failurePlaceholder.isHidden = true
         collection.isHidden = true
-        
-        //--- bindings
-        
-        collection.delegate = dataController
-        collection.dataSource = dataController
-        
-        if
-            #available(iOS 10.0, *)
-        {
-            collection.prefetchDataSource = dataController
-        }
-        
-//        if
-//            #available(iOS 11.0, *)
-//        {
-//            collection.dragDelegate = dataController
-//            collection.dropDelegate = dataController
-//        }
     }
     
     public
@@ -170,3 +136,11 @@ extension CollectionViewContainer
         collection.isHidden = false
     }
 }
+
+//===
+
+/**
+ In case there is a need to use module name as a prefix, this typealias would come in handy.
+ */
+public
+typealias Container = CollectionViewContainer
