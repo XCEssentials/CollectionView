@@ -1,5 +1,5 @@
 projName = 'CollectionView'
-projSummary = 'UICollectionView done right.'
+projSummary = 'UICollectionView wrapped in a container with dedicated (customizable) views for "Empty" and "Failure" states.'
 companyPrefix = 'XCE'
 companyName = 'XCEssentials'
 companyGitHubAccount = 'https://github.com/' + companyName
