@@ -29,7 +29,9 @@ let project = Project("Main") { project in
         "SWIFT_VERSION" <<< "3.0",
         "VERSIONING_SYSTEM" <<< "apple-generic",
         
-        "CURRENT_PROJECT_VERSION" <<< "0" // just a default non-empty value
+        "CURRENT_PROJECT_VERSION" <<< "0", // just a default non-empty value
+        
+        "CODE_SIGN_IDENTITY[sdk=iphoneos*]" <<< "" // no need to code sign fwk
     )
     
     project.configurations.debug.override(
