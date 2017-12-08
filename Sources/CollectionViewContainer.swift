@@ -82,7 +82,7 @@ class CollectionViewContainer<Empty, Failure>: UIView
         //--- layout
         
         emptyPlaceholder.snp.makeConstraints {
-            
+
             $0.edges.equalToSuperview()
         }
         
