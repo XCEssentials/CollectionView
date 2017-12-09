@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
   s.requires_arc              = true
   
   s.framework                 = 'UIKit'
-  s.dependency                  'SnapKit', '~> 3.2'
 
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }
   s.author                    = { 'Maxim Khatskevich' => 'maxim@khatskevi.ch' }
