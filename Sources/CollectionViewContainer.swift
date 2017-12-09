@@ -26,31 +26,36 @@
 
 import UIKit
 
-import SnapKit
-
 //===
 
 open
-class CollectionViewContainer<Empty, Failure>: UIView
-    where
-    Empty: UIView,
-    Failure: UIView
+class CollectionViewContainer<Empty: UIView, Failure: UIView>: UIView
 {
+    // MARK: - Subviews
+
     public
     let emptyPlaceholder: Empty
     
     public
     let failurePlaceholder: Failure
-    
+
+    public
+    let collection: UICollectionView
+
+    // MARK: - Helpers
+
+    private
+    var nestedViews: [UIView]
+    {
+        return [emptyPlaceholder, failurePlaceholder, collection]
+    }
+
     public
     var layout: UICollectionViewLayout
     {
         return collection.collectionViewLayout
     }
-    
-    public
-    let collection: UICollectionView
-    
+
     // MARK: - Initializers
     
     public
@@ -74,33 +79,26 @@ class CollectionViewContainer<Empty, Failure>: UIView
         super.init(frame: .zero)
         
         //--- hierarchy
-        
-        addSubview(emptyPlaceholder)
-        addSubview(failurePlaceholder)
-        addSubview(collection)
+
+        nestedViews.forEach{ self.addSubview($0) }
         
         //--- layout
-        
-        emptyPlaceholder.snp.makeConstraints {
 
-            $0.edges.equalToSuperview()
-        }
-        
-        failurePlaceholder.snp.makeConstraints {
-            
-            $0.edges.equalToSuperview()
-        }
-        
-        collection.snp.makeConstraints {
-            
-            $0.edges.equalToSuperview()
+        nestedViews.forEach{
+
+            NSLayoutConstraint.activate([
+                $0.topAnchor.constraint(equalTo: self.topAnchor),
+                $0.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                $0.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                ])
         }
         
         //--- other settings
         
-        emptyPlaceholder.isHidden = false
-        failurePlaceholder.isHidden = true
-        collection.isHidden = true
+        emptyPlaceholder.isHidden = false  // shown by default
+        failurePlaceholder.isHidden = true // hidden
+        collection.isHidden = true         // hidden
     }
     
     public

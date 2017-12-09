@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source                    = { :git => companyGitHubAccount + '/' + projName + '.git', :tag => s.version }
   s.source_files              = 'Sources/**/*.swift'
 
-  s.ios.deployment_target     = '8.0'
+  s.ios.deployment_target     = '9.0'
   s.requires_arc              = true
   
   s.framework                 = 'UIKit'
