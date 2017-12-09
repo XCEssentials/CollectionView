@@ -48,7 +48,11 @@ class NoContentView: UIView
         addSubview(message)
         
         //--- layout
-        
+
+        translatesAutoresizingMaskIntoConstraints = false
+
+        message.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             message.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             message.centerYAnchor.constraint(equalTo: self.centerYAnchor),

@@ -87,6 +87,8 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
         
         //--- layout
 
+        translatesAutoresizingMaskIntoConstraints = false
+
         nestedViews.forEach{
 
             NSLayoutConstraint.activate([
