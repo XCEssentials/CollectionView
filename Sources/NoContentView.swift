@@ -26,8 +26,6 @@
 
 import UIKit
 
-import SnapKit
-
 //===
 
 public
@@ -51,15 +49,12 @@ class NoContentView: UIView
         
         //--- layout
         
-        let sideMargin = 20.0
-        
-        message.snp.makeConstraints {
-            
-            $0.center.equalToSuperview()
-            $0.leading.lessThanOrEqualToSuperview().offset(sideMargin)
-            $0.trailing.lessThanOrEqualToSuperview().offset(-sideMargin)
-        }
-        
+        NSLayoutConstraint.activate([
+            message.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            message.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            message.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.8)
+            ])
+
         //--- other settings
         
         message.textAlignment = .center
