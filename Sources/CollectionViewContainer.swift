@@ -100,9 +100,14 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
         }
         
         //--- other settings
-        
+
+        emptyPlaceholder.alpha = 1
         emptyPlaceholder.isHidden = false  // shown by default
+
+        failurePlaceholder.alpha = 1
         failurePlaceholder.isHidden = true // hidden
+
+        collection.alpha = 1
         collection.isHidden = true         // hidden
     }
     
@@ -114,8 +119,9 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     }
 }
 
-// MARK: - Presentation logic
+// MARK: - Presentation logic helpers
 
+public
 extension CollectionViewContainer
 {
     func showEmpty()
@@ -137,6 +143,70 @@ extension CollectionViewContainer
         emptyPlaceholder.isHidden = true
         failurePlaceholder.isHidden = true
         collection.isHidden = false
+    }
+}
+
+public
+extension CollectionViewContainer
+{
+    typealias SwitchViaOpacity = (
+        prepare: () -> Void, // call this before animation starts
+        execute: () -> Void, // call this inside animation block
+        cleanup: () -> Void  // call after animation completion (optional)
+    )
+
+    var showEmptyViaOpacity: SwitchViaOpacity
+    {
+        return (
+            {
+                self.emptyPlaceholder.alpha = 0
+                self.bringSubview(toFront: self.emptyPlaceholder)
+                self.emptyPlaceholder.isHidden = false
+            },
+            {
+                self.emptyPlaceholder.alpha = 1
+            },
+            {
+                self.failurePlaceholder.isHidden = true
+                self.collection.isHidden = true
+            }
+        )
+    }
+
+    var showFailureViaOpacity: SwitchViaOpacity
+    {
+        return (
+            {
+                self.failurePlaceholder.alpha = 0
+                self.bringSubview(toFront: self.failurePlaceholder)
+                self.failurePlaceholder.isHidden = false
+            },
+            {
+                self.failurePlaceholder.alpha = 1
+            },
+            {
+                self.emptyPlaceholder.isHidden = true
+                self.collection.isHidden = true
+            }
+        )
+    }
+
+    var showContentViaOpacity: SwitchViaOpacity
+    {
+        return (
+            {
+                self.collection.alpha = 0
+                self.bringSubview(toFront: self.collection)
+                self.collection.isHidden = false
+            },
+            {
+                self.collection.alpha = 1
+            },
+            {
+                self.emptyPlaceholder.isHidden = true
+                self.failurePlaceholder.isHidden = true
+            }
+        )
     }
 }
 
