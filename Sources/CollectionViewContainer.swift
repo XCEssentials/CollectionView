@@ -26,18 +26,21 @@
 
 import UIKit
 
-//===
+//---
 
 open
-class CollectionViewContainer<Empty: UIView, Failure: UIView>: UIView
+class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
+    where
+    EmptyPlaceholder: UIView,
+    FailurePlaceholder: UIView
 {
     // MARK: - Subviews
 
     public
-    let emptyPlaceholder: Empty
+    let emptyPlaceholder: EmptyPlaceholder
     
     public
-    let failurePlaceholder: Failure
+    let failurePlaceholder: FailurePlaceholder
 
     public
     let collection: UICollectionView
@@ -57,13 +60,13 @@ class CollectionViewContainer<Empty: UIView, Failure: UIView>: UIView
     }
 
     // MARK: - Initializers
-    
+
     public
     required
     init(
-        showWhenEmpty empty: Empty,
-        showOnFailure failure: Failure,
-        contentLayout layout: UICollectionViewLayout
+        showWhenEmpty empty: EmptyPlaceholder = EmptyPlaceholder.init(),
+        showOnFailure failure: FailurePlaceholder = FailurePlaceholder.init(),
+        contentLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout()
         )
     {
         self.emptyPlaceholder = empty
@@ -135,11 +138,19 @@ extension CollectionViewContainer
     }
 }
 
-//===
+//---
+
+public
+typealias SimpleCollectionViewContainer = CollectionViewContainer<NoContentView, NoContentView>
+
+//---
 
 /**
- In case there is a need to use module name as a prefix, this typealias would come in handy.
+ Shorter typealiases, would be especially convenient when use module name as a prefix.
  */
 public
 typealias Container<Empty: UIView, Failure: UIView> =
     CollectionViewContainer<Empty, Failure>
+
+public
+typealias SimpleContainer = SimpleCollectionViewContainer
