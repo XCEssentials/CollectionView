@@ -27,7 +27,7 @@ companyPrefix = 'XCE'
 repoName = 'CollectionView'
 repoURL = 'https://github.com/' + companyName + '/' + repoName
 moduleName = companyPrefix + repoName
-projName = 'Main' + '.xcodeproj'
+projName = 'CollectionView' + '.xcodeproj'
 podspecFilePath = './' + moduleName + '.podspec'
 
 #===
