@@ -29,6 +29,31 @@ import UIKit
 //---
 
 open
+class SimpleFlowLayout: UICollectionViewFlowLayout
+{
+    public
+    override
+    init()
+    {
+        super.init()
+
+        //---
+
+        self.minimumLineSpacing = 0
+        self.minimumInteritemSpacing = 0
+    }
+
+    public
+    required
+    init?(coder aDecoder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+//---
+
+open
 class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     where
     EmptyPlaceholder: UIView,
@@ -66,7 +91,7 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     init(
         showWhenEmpty empty: EmptyPlaceholder = EmptyPlaceholder.init(),
         showOnFailure failure: FailurePlaceholder = FailurePlaceholder.init(),
-        contentLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout()
+        contentLayout layout: UICollectionViewLayout = SimpleFlowLayout()
         )
     {
         self.emptyPlaceholder = empty
@@ -91,6 +116,8 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
 
         nestedViews.forEach{
 
+            $0.translatesAutoresizingMaskIntoConstraints = false
+
             NSLayoutConstraint.activate([
                 $0.topAnchor.constraint(equalTo: self.topAnchor),
                 $0.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -98,8 +125,10 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
                 $0.bottomAnchor.constraint(equalTo: self.bottomAnchor)
                 ])
         }
-        
+
         //--- other settings
+
+        self.backgroundColor = .clear
 
         emptyPlaceholder.alpha = 1
         emptyPlaceholder.isHidden = false  // shown by default
@@ -107,6 +136,7 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
         failurePlaceholder.alpha = 1
         failurePlaceholder.isHidden = true // hidden
 
+        collection.backgroundColor = .clear
         collection.alpha = 1
         collection.isHidden = true         // hidden
     }
