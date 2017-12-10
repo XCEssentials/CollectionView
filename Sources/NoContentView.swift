@@ -60,6 +60,8 @@ class NoContentView: UIView
             ])
 
         //--- other settings
+
+        self.backgroundColor = .clear
         
         message.textAlignment = .center
         message.textColor = .lightGray
