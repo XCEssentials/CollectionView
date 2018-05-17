@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9428BDA81F574AD7001CA382 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9428BDA71F574AD7001CA382 /* NoContentView.swift */; };
-		9444D28C1F582B86004C062E /* CollectionViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9444D28B1F582B86004C062E /* CollectionViewContainer.swift */; };
+		945F470620AD939100ACFC93 /* CollectionViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470420AD939100ACFC93 /* CollectionViewContainer.swift */; };
+		945F470720AD939100ACFC93 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470520AD939100ACFC93 /* NoContentView.swift */; };
+		945F470A20AD93B900ACFC93 /* CollectionDataSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470920AD93B900ACFC93 /* CollectionDataSupport.swift */; };
+		BBB36366800A725E123C4949 /* Pods_Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6143B2E11C5CE1B573FC0A9 /* Pods_Fwk.framework */; };
 		D470CDA0144079E140F874BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CE2094255F79031B39479E /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1974249670698C903AEEFB88 /* Pods-Fwk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.debug.xcconfig"; sourceTree = "<group>"; };
+		24B5D2A33EC330694C4C3C99 /* Pods-Fwk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fwk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fwk/Pods-Fwk.release.xcconfig"; sourceTree = "<group>"; };
 		92CE2094255F79031B39479E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9428BDA71F574AD7001CA382 /* NoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
-		9444D28B1F582B86004C062E /* CollectionViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewContainer.swift; sourceTree = "<group>"; };
+		945F470420AD939100ACFC93 /* CollectionViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewContainer.swift; sourceTree = "<group>"; };
+		945F470520AD939100ACFC93 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
+		945F470920AD93B900ACFC93 /* CollectionDataSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSupport.swift; sourceTree = "<group>"; };
 		C1BF7B2C19C833D043967377 /* XCECollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCECollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6143B2E11C5CE1B573FC0A9 /* Pods_Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -39,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D470CDA0144079E140F874BE /* Foundation.framework in Frameworks */,
+				BBB36366800A725E123C4949 /* Pods_Fwk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +57,7 @@
 				D59F97B7CB593400A7ACA288 /* Frameworks */,
 				76B2A5BFCF3466239AD91C08 /* Products */,
 				EDDAE0CFD4849E28286C42C0 /* Sources */,
+				D15797E0CBE51212A8F4FDBC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +67,32 @@
 				C1BF7B2C19C833D043967377 /* XCECollectionView.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		945F470320AD939100ACFC93 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				945F470420AD939100ACFC93 /* CollectionViewContainer.swift */,
+				945F470520AD939100ACFC93 /* NoContentView.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		945F470820AD939A00ACFC93 /* WithData */ = {
+			isa = PBXGroup;
+			children = (
+				945F470920AD93B900ACFC93 /* CollectionDataSupport.swift */,
+			);
+			path = WithData;
+			sourceTree = "<group>";
+		};
+		D15797E0CBE51212A8F4FDBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1974249670698C903AEEFB88 /* Pods-Fwk.debug.xcconfig */,
+				24B5D2A33EC330694C4C3C99 /* Pods-Fwk.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D59F97B7CB593400A7ACA288 /* Frameworks */ = {
@@ -76,14 +109,14 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = $local;
+			name = "$local";
 			sourceTree = "<group>";
 		};
 		EDDAE0CFD4849E28286C42C0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9428BDA71F574AD7001CA382 /* NoContentView.swift */,
-				9444D28B1F582B86004C062E /* CollectionViewContainer.swift */,
+				945F470320AD939100ACFC93 /* Core */,
+				945F470820AD939A00ACFC93 /* WithData */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -103,6 +136,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E417F6169CAD3FF441D15BED /* Build configuration list for PBXNativeTarget "Fwk" */;
 			buildPhases = (
+				CC4C0C30ECE954F69AA049B1 /* [CP] Check Pods Manifest.lock */,
 				CC599BAD3B195E46B92A3B9C /* SwiftLint */,
 				4F0E99703BC56BFA9935F085 /* Sources */,
 				EB4F6514EA6E2F8F976ED9F7 /* Frameworks */,
@@ -145,6 +179,24 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		CC4C0C30ECE954F69AA049B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fwk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CC599BAD3B195E46B92A3B9C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,8 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9428BDA81F574AD7001CA382 /* NoContentView.swift in Sources */,
-				9444D28C1F582B86004C062E /* CollectionViewContainer.swift in Sources */,
+				945F470720AD939100ACFC93 /* NoContentView.swift in Sources */,
+				945F470620AD939100ACFC93 /* CollectionViewContainer.swift in Sources */,
+				945F470A20AD93B900ACFC93 /* CollectionDataSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +252,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -222,10 +275,11 @@
 		};
 		9C96B7CD7EDB12B220DB8C22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24B5D2A33EC330694C4C3C99 /* Pods-Fwk.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Info/Fwk.plist;
@@ -267,7 +321,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -297,10 +351,11 @@
 		};
 		CDB4CE6FD15366F7544EF50D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1974249670698C903AEEFB88 /* Pods-Fwk.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Info/Fwk.plist;
