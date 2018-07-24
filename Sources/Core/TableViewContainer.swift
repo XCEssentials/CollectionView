@@ -1,19 +1,19 @@
 /*
- 
+
  MIT License
- 
+
  Copyright (c) 2016 Maxim Khatskevich (maxim@khatskevi.ch)
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +21,7 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
- 
+
  */
 
 import UIKit
@@ -29,32 +29,7 @@ import UIKit
 //---
 
 open
-class SimpleFlowLayout: UICollectionViewFlowLayout
-{
-    public
-    override
-    init()
-    {
-        super.init()
-
-        //---
-
-        self.minimumLineSpacing = 0
-        self.minimumInteritemSpacing = 0
-    }
-
-    public
-    required
-    init?(coder aDecoder: NSCoder)
-    {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-//---
-
-open
-class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
+class TableViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     where
     EmptyPlaceholder: UIView,
     FailurePlaceholder: UIView
@@ -63,25 +38,19 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
 
     public
     let emptyPlaceholder: EmptyPlaceholder
-    
+
     public
     let failurePlaceholder: FailurePlaceholder
 
     public
-    let collection: UICollectionView
+    let table: UITableView
 
     // MARK: - Helpers
 
     private
     var nestedViews: [UIView]
     {
-        return [emptyPlaceholder, failurePlaceholder, collection]
-    }
-
-    public
-    var layout: UICollectionViewLayout
-    {
-        return collection.collectionViewLayout
+        return [emptyPlaceholder, failurePlaceholder, table]
     }
 
     // MARK: - Initializers
@@ -91,25 +60,25 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     init(
         showWhenEmpty empty: EmptyPlaceholder = EmptyPlaceholder.init(),
         showOnFailure failure: FailurePlaceholder = FailurePlaceholder.init(),
-        contentLayout layout: UICollectionViewLayout = SimpleFlowLayout()
+        style: UITableViewStyle = .plain
         )
     {
         self.emptyPlaceholder = empty
         self.failurePlaceholder = failure
-        
-        self.collection = UICollectionView(
+
+        self.table = UITableView(
             frame: CGRect.zero,
-            collectionViewLayout: layout
+            style: style
         )
-        
+
         //---
-        
+
         super.init(frame: .zero)
-        
+
         //--- hierarchy
 
         nestedViews.forEach{ self.addSubview($0) }
-        
+
         //--- layout
 
         translatesAutoresizingMaskIntoConstraints = false
@@ -136,11 +105,11 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
         failurePlaceholder.alpha = 1
         failurePlaceholder.isHidden = true // hidden
 
-        collection.backgroundColor = .clear
-        collection.alpha = 1
-        collection.isHidden = true         // hidden
+        table.backgroundColor = .clear
+        table.alpha = 1
+        table.isHidden = true // hidden
     }
-    
+
     public
     required
     init?(coder aDecoder: NSCoder)
@@ -152,32 +121,32 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
 // MARK: - Presentation logic helpers
 
 public
-extension CollectionViewContainer
+extension TableViewContainer
 {
     func showEmpty()
     {
         emptyPlaceholder.isHidden = false
         failurePlaceholder.isHidden = true
-        collection.isHidden = true
+        table.isHidden = true
     }
-    
+
     func showFailure()
     {
         emptyPlaceholder.isHidden = true
         failurePlaceholder.isHidden = false
-        collection.isHidden = true
+        table.isHidden = true
     }
-    
+
     func showContent()
     {
         emptyPlaceholder.isHidden = true
         failurePlaceholder.isHidden = true
-        collection.isHidden = false
+        table.isHidden = false
     }
 }
 
 public
-extension CollectionViewContainer
+extension TableViewContainer
 {
     var showEmptyViaOpacity: SwitchViaOpacity
     {
@@ -192,7 +161,7 @@ extension CollectionViewContainer
             },
             {
                 self.failurePlaceholder.isHidden = true
-                self.collection.isHidden = true
+                self.table.isHidden = true
             }
         )
     }
@@ -210,7 +179,7 @@ extension CollectionViewContainer
             },
             {
                 self.emptyPlaceholder.isHidden = true
-                self.collection.isHidden = true
+                self.table.isHidden = true
             }
         )
     }
@@ -219,12 +188,12 @@ extension CollectionViewContainer
     {
         return (
             {
-                self.collection.alpha = 0
-                self.bringSubview(toFront: self.collection)
-                self.collection.isHidden = false
+                self.table.alpha = 0
+                self.bringSubview(toFront: self.table)
+                self.table.isHidden = false
             },
             {
-                self.collection.alpha = 1
+                self.table.alpha = 1
             },
             {
                 self.emptyPlaceholder.isHidden = true
@@ -237,9 +206,9 @@ extension CollectionViewContainer
 // MARK: - Helper aliases
 
 public
-typealias CollectionContainer<Empty: UIView, Failure: UIView> =
-    CollectionViewContainer<Empty, Failure>
+typealias TableContainer<Empty: UIView, Failure: UIView> =
+    TableViewContainer<Empty, Failure>
 
 public
-typealias StandardCollectionContainer =
-    CollectionContainer<NoContentView, NoContentView>
+typealias StandardTableContainer =
+    TableContainer<NoContentView, NoContentView>
