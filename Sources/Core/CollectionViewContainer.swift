@@ -29,7 +29,7 @@ import UIKit
 //---
 
 open
-class SimpleFlowLayout: UICollectionViewFlowLayout
+class StandardFlowLayout: UICollectionViewFlowLayout
 {
     public
     override
@@ -91,7 +91,7 @@ class CollectionViewContainer<EmptyPlaceholder, FailurePlaceholder>: UIView
     init(
         showWhenEmpty empty: EmptyPlaceholder = EmptyPlaceholder.init(),
         showOnFailure failure: FailurePlaceholder = FailurePlaceholder.init(),
-        contentLayout layout: UICollectionViewLayout = SimpleFlowLayout()
+        contentLayout layout: UICollectionViewLayout = StandardFlowLayout()
         )
     {
         self.emptyPlaceholder = empty
