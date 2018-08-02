@@ -10,6 +10,8 @@
 		945F470620AD939100ACFC93 /* CollectionViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470420AD939100ACFC93 /* CollectionViewContainer.swift */; };
 		945F470720AD939100ACFC93 /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470520AD939100ACFC93 /* NoContentView.swift */; };
 		945F470A20AD93B900ACFC93 /* CollectionDataSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F470920AD93B900ACFC93 /* CollectionDataSupport.swift */; };
+		94FC3A3721079844001A5D87 /* TableViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC3A3621079844001A5D87 /* TableViewContainer.swift */; };
+		94FC3A39210799AE001A5D87 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FC3A38210799AE001A5D87 /* Common.swift */; };
 		BBB36366800A725E123C4949 /* Pods_Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6143B2E11C5CE1B573FC0A9 /* Pods_Fwk.framework */; };
 		D470CDA0144079E140F874BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92CE2094255F79031B39479E /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		945F470420AD939100ACFC93 /* CollectionViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewContainer.swift; sourceTree = "<group>"; };
 		945F470520AD939100ACFC93 /* NoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
 		945F470920AD93B900ACFC93 /* CollectionDataSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSupport.swift; sourceTree = "<group>"; };
+		94FC3A3621079844001A5D87 /* TableViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewContainer.swift; sourceTree = "<group>"; };
+		94FC3A38210799AE001A5D87 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		C1BF7B2C19C833D043967377 /* XCECollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCECollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6143B2E11C5CE1B573FC0A9 /* Pods_Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,8 +76,10 @@
 		945F470320AD939100ACFC93 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				945F470420AD939100ACFC93 /* CollectionViewContainer.swift */,
 				945F470520AD939100ACFC93 /* NoContentView.swift */,
+				94FC3A38210799AE001A5D87 /* Common.swift */,
+				94FC3A3621079844001A5D87 /* TableViewContainer.swift */,
+				945F470420AD939100ACFC93 /* CollectionViewContainer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -109,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$local";
+			name = $local;
 			sourceTree = "<group>";
 		};
 		EDDAE0CFD4849E28286C42C0 /* Sources */ = {
@@ -219,7 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				945F470720AD939100ACFC93 /* NoContentView.swift in Sources */,
+				94FC3A3721079844001A5D87 /* TableViewContainer.swift in Sources */,
 				945F470620AD939100ACFC93 /* CollectionViewContainer.swift in Sources */,
+				94FC3A39210799AE001A5D87 /* Common.swift in Sources */,
 				945F470A20AD93B900ACFC93 /* CollectionDataSupport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +260,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -279,7 +287,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Info/Fwk.plist;
@@ -321,7 +329,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -355,7 +363,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Info/Fwk.plist;
